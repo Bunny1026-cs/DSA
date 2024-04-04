@@ -17,7 +17,7 @@ int count(int n)
     // M3 - log with base 10 + 1
     return log10(n) + 1;
 }
-
+// reverse string
 string rev(int n)
 {
     // M1 - loop
