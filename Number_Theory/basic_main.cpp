@@ -80,10 +80,74 @@ string armstrong(int n)
     return (sum == n ? "Yes" : "No");
 }
 
+void printDivisors(int n)
+{
+    // M1 - Optimal
+    for (int i = 1; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            cout << i << " " << (n / i) << endl;
+        }
+    }
+}
+
+bool checkPrime(int n)
+{
+
+    // M1 - brute (2 - n)
+    // M2 - optimal (1 - root(n))
+    // M3 - removing multiples of 2 and 3
+    if (n <= 3)
+        return true;
+    if (n % 2 == 0 || n % 3 == 0)
+        return false;
+    for (int i = 5; i * i <= n; i += 6)
+    {
+        if (n % i == 0 || n % (i + 2) == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int SumOfallDivison(int n)
+{
+    // M1 - brute method O(n*sqrt(n))
+    // int sum = 0;
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     for (int j = 1; j * j <= i; j++)
+    //     {
+    //         if (i % j == 0)
+    //         {
+    //             sum += j;
+    //             if (j != (i / j))
+    //             {
+    //                 sum += (i / j);
+    //             }
+    //         }
+    //     }
+    // }
+    // return sum;
+    // M2 - Better
+    int sum = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        sum += i * (n / i);
+    }
+    return sum;
+    // M3 - Harmonic lemma
+}
+
 int main()
 {
     // cout << count(123459028);
     // cout << rev(1234);
     // cout << gcd(6, 14);
-    cout << armstrong(1634);
+    // cout << armstrong(1634);
+    // printDivisors(20);
+    // cout << checkPrime(19);
+    cout << SumOfallDivison(5);
 }
