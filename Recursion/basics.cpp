@@ -52,9 +52,63 @@ void reverseArray(vector<int> &arr, int l, int h)
 }
 
 // Palindrome
-void StringPalin(string s)
+bool StringPalin(string s)
 {
+    //M1 - reverse string and check
+    // string s1 = s;
+    // reverse(s.begin(),s.end());
+    // return (s1 == s?true:false);
     
+    // M2
+    // string ans = "";
+    // for (int i = 0; i < s.size(); i++)
+    // {
+    //     if (isalnum(s[i]))
+    //         ans += tolower(s[i]);
+    // }
+    // string rev = ans;
+    // reverse(ans.begin(),ans.end());
+    // return (rev == ans?true:false);
+
+    // M3
+    int i = 0 , j = s.size() - 1 ;
+    while(i < j){
+        if(!isalnum(s[i])){
+            i++;
+            continue;
+        }
+        if(!isalnum(s[j])){
+            j--;
+            continue;
+        }
+        if (tolower(s[i]) != tolower(s[j]))
+            return false;
+        i++;
+        j--;
+    }
+    return true;
+
+}
+
+// fib - 0 1 1 2 3 5 8 13 . . .
+int fib(int n){
+    // M1 - loop
+    // int a = 0 , b = 1 , sum = 0;
+    // for (int i = 0; i <= n; i++)
+    // {
+    //     cout << a << " ";
+    //     sum = a + b;
+    //     a = b;
+    //     b = sum;
+    // }
+
+    // M2 - recursion better
+    // if (n == 0) return a;
+    // return fib(b , a + b , n - 1);
+
+    // M3 - recusion
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
 }
 
 int main()
@@ -63,8 +117,10 @@ int main()
     // Nto1_(5);
     // cout << SumOfN(5);
     // cout << factorial(5);
-    vector<int> v = {1, 2, 3, 4, 5};
-    reverseArray(v, 0, v.size() - 1);
-    for (auto i : v)
-        cout << i << " ";
+    // vector<int> v = {1, 2, 3, 4, 5};
+    // reverseArray(v, 0, v.size() - 1);
+    // for (auto i : v)
+    //     cout << i << " ";
+    // cout << StringPalin("A man, a plan, a canal: Panama");
+    cout << fib(5);
 }
