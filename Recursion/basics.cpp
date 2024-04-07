@@ -30,6 +30,7 @@ int SumOfN(int n)
 }
 
 // 0! = 1 , 1! = 1 , 2! = 2 , 3! = 6
+
 int factorial(int n)
 {
     if (n > 0)
