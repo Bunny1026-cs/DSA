@@ -41,10 +41,30 @@ int factorial(int n)
     return 1;
 }
 
+// Reversing an array by swap-
+void reverseArray(vector<int> &arr, int l, int h)
+{
+    if (l <= h)
+    {
+        swap(arr[l], arr[h]);
+        reverseArray(arr, l + 1, h - 1);
+    }
+}
+
+// Palindrome
+void StringPalin(string s)
+{
+    
+}
+
 int main()
 {
     //_1toN(5);
     // Nto1_(5);
     // cout << SumOfN(5);
-    cout << factorial(5);
+    // cout << factorial(5);
+    vector<int> v = {1, 2, 3, 4, 5};
+    reverseArray(v, 0, v.size() - 1);
+    for (auto i : v)
+        cout << i << " ";
 }
