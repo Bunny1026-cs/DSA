@@ -89,10 +89,11 @@ bool StringPalin(string s)
     return true;
 
 }
-void tower_of_hanoi(int a, int b, int c){
-    int a = 0; 
-}
+
+
+
 // fib - 0 1 1 2 3 5 8 13 . . .
+int v[10] = {0};
 int fib(int n){
     // M1 - loop
     // int a = 0 , b = 1 , sum = 0;
@@ -108,10 +109,50 @@ int fib(int n){
     // if (n == 0) return a;
     // return fib(b , a + b , n - 1);
 
-    // M3 - recusion
-    if (n <= 1) return n;
-    return fib(n - 1) + fib(n - 2);
+    //M3 - recusion
+    // if (n <= 1) return n;
+    // return fib(n - 1) + fib(n - 2);
+
+    //M4 - memoization
+    
+    if (n <= 1){
+        v[n] = n;
+        return n;
+    }
+    else{
+    if(v[n-1] == 0){
+        v[n - 1] = fib(n-1);
+    }
+    if(v[n-2] == 0){
+        v[n-2] = fib(n-2);
+    }
+    return v[n-1] + v[n-2];
+    }
+
 }
+
+float taylor(int x , int n){
+    // M1 - normal
+    // static float p = 1  ,f = 1,r;
+    // if(n == 0) return 0;
+    // r = taylor(x,n-1);
+    // p = p*x;
+    // f = f*(n);
+    // return r + p/f;
+    // r = taylor(x,n-1) + p/f;
+    // p = p*x;
+    // f = f*(n);
+    // return r;
+
+    // M2 - Horner's rule
+    if(n == 0) return 1;
+    static float p = n,r;
+    r = taylor(x,n-1) *(x/p) + 1;
+    p--;
+    return r;
+}
+
+
 
 int main()
 {
@@ -125,4 +166,5 @@ int main()
     //     cout << i << " ";
     // cout << StringPalin("A man, a plan, a canal: Panama");
     cout << fib(5);
+    // cout << taylor(1,10);
 }
