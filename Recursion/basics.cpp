@@ -54,11 +54,11 @@ void reverseArray(vector<int> &arr, int l, int h)
 // Palindrome
 bool StringPalin(string s)
 {
-    //M1 - reverse string and check
-    // string s1 = s;
-    // reverse(s.begin(),s.end());
-    // return (s1 == s?true:false);
-    
+    // M1 - reverse string and check
+    //  string s1 = s;
+    //  reverse(s.begin(),s.end());
+    //  return (s1 == s?true:false);
+
     // M2
     // string ans = "";
     // for (int i = 0; i < s.size(); i++)
@@ -71,13 +71,16 @@ bool StringPalin(string s)
     // return (rev == ans?true:false);
 
     // M3
-    int i = 0 , j = s.size() - 1 ;
-    while(i < j){
-        if(!isalnum(s[i])){
+    int i = 0, j = s.size() - 1;
+    while (i < j)
+    {
+        if (!isalnum(s[i]))
+        {
             i++;
             continue;
         }
-        if(!isalnum(s[j])){
+        if (!isalnum(s[j]))
+        {
             j--;
             continue;
         }
@@ -87,14 +90,12 @@ bool StringPalin(string s)
         j--;
     }
     return true;
-
 }
-
-
 
 // fib - 0 1 1 2 3 5 8 13 . . .
 int v[10] = {0};
-int fib(int n){
+int fib(int n)
+{
     // M1 - loop
     // int a = 0 , b = 1 , sum = 0;
     // for (int i = 0; i <= n; i++)
@@ -109,29 +110,33 @@ int fib(int n){
     // if (n == 0) return a;
     // return fib(b , a + b , n - 1);
 
-    //M3 - recusion
-    // if (n <= 1) return n;
-    // return fib(n - 1) + fib(n - 2);
+    // M3 - recusion
+    //  if (n <= 1) return n;
+    //  return fib(n - 1) + fib(n - 2);
 
-    //M4 - memoization
-    
-    if (n <= 1){
+    // M4 - memoization
+
+    if (n <= 1)
+    {
         v[n] = n;
         return n;
     }
-    else{
-    if(v[n-1] == 0){
-        v[n - 1] = fib(n-1);
+    else
+    {
+        if (v[n - 1] == 0)
+        {
+            v[n - 1] = fib(n - 1);
+        }
+        if (v[n - 2] == 0)
+        {
+            v[n - 2] = fib(n - 2);
+        }
+        return v[n - 1] + v[n - 2];
     }
-    if(v[n-2] == 0){
-        v[n-2] = fib(n-2);
-    }
-    return v[n-1] + v[n-2];
-    }
-
 }
 
-float taylor(int x , int n){
+float taylor(int x, int n)
+{
     // M1 - normal
     // static float p = 1  ,f = 1,r;
     // if(n == 0) return 0;
@@ -145,14 +150,27 @@ float taylor(int x , int n){
     // return r;
 
     // M2 - Horner's rule
-    if(n == 0) return 1;
-    static float p = n,r;
-    r = taylor(x,n-1) *(x/p) + 1;
+    if (n == 0)
+        return 1;
+    static float p = n, r;
+    r = taylor(x, n - 1) * (x / p) + 1;
     p--;
     return r;
 }
 
+//nCr = (n-1)C(r) + (n-1)C(r-1)
+int c(int n, int r)
+{
+    if (r == 0 || r == n)
+        return 1;
+    else
+        return c(n - 1, r) + c(n - 1, r - 1);
+}
 
+// tower of hanoi
+void TOH(int a,int b,int c){
+    
+}
 
 int main()
 {
@@ -165,6 +183,7 @@ int main()
     // for (auto i : v)
     //     cout << i << " ";
     // cout << StringPalin("A man, a plan, a canal: Panama");
-    cout << fib(5);
+    // cout << fib(5);
     // cout << taylor(1,10);
+    cout << c(4,2);
 }
