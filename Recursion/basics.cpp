@@ -89,7 +89,9 @@ bool StringPalin(string s)
     return true;
 
 }
-
+void tower_of_hanoi(int a, int b, int c){
+    int a = 0; 
+}
 // fib - 0 1 1 2 3 5 8 13 . . .
 int fib(int n){
     // M1 - loop
