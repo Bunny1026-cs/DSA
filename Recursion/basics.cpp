@@ -158,7 +158,7 @@ float taylor(int x, int n)
     return r;
 }
 
-//nCr = (n-1)C(r) + (n-1)C(r-1)
+// nCr = (n-1)C(r) + (n-1)C(r-1)
 int c(int n, int r)
 {
     if (r == 0 || r == n)
@@ -168,8 +168,14 @@ int c(int n, int r)
 }
 
 // tower of hanoi
-void TOH(int a,int b,int c){
-    
+void TOH(int n, int a, int b, int c)
+{
+    if (n > 0)
+    {
+        TOH(n - 1, a, c, b);
+        printf("from %d to %d\n", a, c);
+        TOH(n - 1, b, a, c);
+    }
 }
 
 int main()
@@ -185,5 +191,6 @@ int main()
     // cout << StringPalin("A man, a plan, a canal: Panama");
     // cout << fib(5);
     // cout << taylor(1,10);
-    cout << c(4,2);
+    // cout << c(4, 2);
+    TOH(16,1,2,3);
 }
