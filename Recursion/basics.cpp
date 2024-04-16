@@ -176,7 +176,7 @@ void TOH(int n, int a, int b, int c)
         printf("from %d to %d\n", a, c);
         TOH(n - 1, b, a, c);
     }
-}
+}   
 
 int main()
 {
